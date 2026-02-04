@@ -1,0 +1,8 @@
+﻿{
+  "name": "@qfe/api",
+  "private": true,
+  "scripts": {
+    "dev": "ts-node server.ts",
+    "start": "node server.ts"
+  }
+}

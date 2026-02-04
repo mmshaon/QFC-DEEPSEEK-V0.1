@@ -1,0 +1,56 @@
+{
+  "name": "quantum-finance-engine",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "start": "turbo start",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "clean": "turbo clean",
+    "db:generate": "cd database && npx prisma generate",
+    "db:migrate": "cd database && npx prisma migrate deploy",
+    "db:studio": "cd database && npx prisma studio",
+    "db:seed": "cd database && npx tsx seeds/init.ts",
+    "bootstrap:creator": "cd scripts/bootstrap && npx tsx creator.ts",
+    "deploy:vercel": "cd scripts/deploy && npx tsx vercel.ts",
+    "deploy:vps": "cd scripts/deploy && npx tsx vps.ts",
+    "backup": "cd scripts/backup && npx tsx backup.ts",
+    "restore": "cd scripts/backup && npx tsx restore.ts",
+    "health": "curl http://localhost:4000/health",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.0.0",
+    "turbo": "^1.10.0",
+    "typescript": "^5.0.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "packageManager": "npm@10.0.0"
+}
